@@ -1,0 +1,5 @@
+**/bin/
+**/obj/
+**/.vs/
+
+SalesTaxCalculator/SalesTaxCalculator/.DS_Store
