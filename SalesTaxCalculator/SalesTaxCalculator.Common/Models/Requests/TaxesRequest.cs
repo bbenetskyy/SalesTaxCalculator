@@ -11,6 +11,6 @@ public class TaxesRequest
     public string ToZip { get; set; }
     public string ToState { get; set; }
     public double Amount { get; set; }
-    public int Shipping { get; set; }
+    public double Shipping { get; set; }
     public List<LineRequest> LineItems { get; set; }
 }

@@ -1,5 +1,10 @@
 namespace SalesTaxCalculator.Common.Models;
 
+public class RateResponse
+{
+    public Rate Rate { get; set; }
+}
+
 public class Rate
 {
     public string City { get; set; }

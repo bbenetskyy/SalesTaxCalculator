@@ -8,6 +8,7 @@ using SalesTaxCalculator.Common.Interfaces;
 using SalesTaxCalculator.PageModels;
 using SalesTaxCalculator.Services;
 using SalesTaxCalculator.Services.ApiClients;
+using SalesTaxCalculator.Services.Http;
 
 namespace SalesTaxCalculator
 {
@@ -22,25 +23,29 @@ namespace SalesTaxCalculator
                 NamingStrategy = new SnakeCaseNamingStrategy()
             };
             
-            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
+            var jsonSerializer = new JsonSerializerSettings
             {
                 ContractResolver = contractResolver,
+                NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.Indented
-            }));
+            };
+
+            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(jsonSerializer));
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IApiConfigurator, ApiConfigurator>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IHttpClientFactory, HttpClientFactory>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITaxesApi>(() =>
             {
-                var httpClientManager = Mvx.IoCProvider.Resolve<IHttpClientFactory>();
                 var apiConfigurator = Mvx.IoCProvider.Resolve<IApiConfigurator>();
+                var httpClientManager = Mvx.IoCProvider.Resolve<IHttpClientFactory>();
                 return RestService.For<ITaxesApi>(httpClientManager.CreateHttpClient(apiConfigurator.GetApiUrl(), true), refitSettings);
             });
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRatesApi>(() =>
             {
-                var httpClientManager = Mvx.IoCProvider.Resolve<IHttpClientFactory>();
                 var apiConfigurator = Mvx.IoCProvider.Resolve<IApiConfigurator>();
+                var httpClientManager = Mvx.IoCProvider.Resolve<IHttpClientFactory>();
                 return RestService.For<IRatesApi>(httpClientManager.CreateHttpClient(apiConfigurator.GetApiUrl(), true), refitSettings);
             });
 

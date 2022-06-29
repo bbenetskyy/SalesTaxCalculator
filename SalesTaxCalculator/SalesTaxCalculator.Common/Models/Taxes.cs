@@ -1,6 +1,10 @@
 namespace SalesTaxCalculator.Common.Models;
 
-public class Taxes
+public class TaxResponse
+{
+    public Tax Tax { get; set; }
+}
+public class Tax
 {
     public double AmountToCollect { get; set; }
     public BaseBreakdown Breakdown { get; set; }

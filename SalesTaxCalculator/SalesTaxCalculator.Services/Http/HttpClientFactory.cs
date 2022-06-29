@@ -44,6 +44,7 @@ public class HttpClientFactory : IHttpClientFactory
         if (_httpClientAuthorised == null || _httpClientAuthorised.BaseAddress.AbsoluteUri != _baseUrl)
         {
             HttpMessageHandler handler = new AuthenticatedHttpClientHandler(GetAuthenticationHeader);
+            handler = new LoggerHttpMessageHandler(handler);
             _httpClientAuthorised = new HttpClient(handler);
             _httpClientAuthorised.BaseAddress = new Uri(_baseUrl);
         }
@@ -55,7 +56,9 @@ public class HttpClientFactory : IHttpClientFactory
     {
         if (_httpClientNotAuthorised == null || _httpClientAuthorised.BaseAddress.AbsoluteUri != _baseUrl)
         {
-            _httpClientNotAuthorised = new HttpClient();
+            HttpMessageHandler handler = new HttpClientHandler();
+            handler = new LoggerHttpMessageHandler(handler);
+            _httpClientNotAuthorised = new HttpClient(handler);
             _httpClientNotAuthorised.BaseAddress = new Uri(_baseUrl);
         }
 

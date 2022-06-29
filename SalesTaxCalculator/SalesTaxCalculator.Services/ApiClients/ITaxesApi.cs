@@ -7,5 +7,5 @@ namespace SalesTaxCalculator.Services.ApiClients;
 public interface ITaxesApi
 {
     [Post("/v2/taxes")]
-    Task<IApiResponse<Taxes>> CalculateTaxes([Body] TaxesRequest request);
+    Task<IApiResponse<TaxResponse>> CalculateTaxes([Body] TaxesRequest request);
 }
