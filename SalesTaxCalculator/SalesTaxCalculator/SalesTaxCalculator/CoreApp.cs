@@ -1,6 +1,8 @@
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Refit;
 using SalesTaxCalculator.Common.Interfaces;
 using SalesTaxCalculator.PageModels;
@@ -15,7 +17,16 @@ namespace SalesTaxCalculator
         {
             RegisterAppStart<MainPageModel>();
             
-            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+            var contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new SnakeCaseNamingStrategy()
+            };
+            
+            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            }));
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IApiConfigurator, ApiConfigurator>();
 
