@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SalesTaxCalculator.MainPage">
+<views:MvxContentPage x:TypeArguments="pageModels:MainPageModel" 
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
+                      x:Class="SalesTaxCalculator.Pages.MainPage">
 
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -21,5 +24,5 @@
         </Label>
     </StackLayout>
 
-</ContentPage>
+</views:MvxContentPage>
 
