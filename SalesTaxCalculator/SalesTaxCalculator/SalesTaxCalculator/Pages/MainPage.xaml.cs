@@ -1,9 +1,11 @@
-﻿using MvvmCross.Forms.Views;
+﻿using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Forms.Views;
 using SalesTaxCalculator.PageModels;
 
 namespace SalesTaxCalculator.Pages
 {
-    public partial class MainPage : MvxContentPage<MainPageModel>
+    [MvxTabbedPagePresentation(TabbedPosition.Root, Animated = true, NoHistory = true)]
+    public partial class MainPage : MvxTabbedPage<MainPageModel>
     {
         public MainPage()
         {
