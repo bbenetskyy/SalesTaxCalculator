@@ -56,5 +56,35 @@ namespace SalesTaxCalculator.Resources {
                 return ResourceManager.GetString("RateTabTitle", resourceCulture);
             }
         }
+        
+        internal static string ZipPlaceholder {
+            get {
+                return ResourceManager.GetString("ZipPlaceholder", resourceCulture);
+            }
+        }
+        
+        internal static string CountryPlaceholder {
+            get {
+                return ResourceManager.GetString("CountryPlaceholder", resourceCulture);
+            }
+        }
+        
+        internal static string CityPlaceholder {
+            get {
+                return ResourceManager.GetString("CityPlaceholder", resourceCulture);
+            }
+        }
+        
+        internal static string CalculateRateButton {
+            get {
+                return ResourceManager.GetString("CalculateRateButton", resourceCulture);
+            }
+        }
+        
+        internal static string RequiredFieldMessage {
+            get {
+                return ResourceManager.GetString("RequiredFieldMessage", resourceCulture);
+            }
+        }
     }
 }

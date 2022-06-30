@@ -24,4 +24,19 @@
     <data name="RateTabTitle" xml:space="preserve">
         <value>Rates</value>
     </data>
+    <data name="ZipPlaceholder" xml:space="preserve">
+        <value>Zip Code (Required)</value>
+    </data>
+    <data name="CountryPlaceholder" xml:space="preserve">
+        <value>Country Two Letters (Required)</value>
+    </data>
+    <data name="CityPlaceholder" xml:space="preserve">
+        <value>City Name (Optional)</value>
+    </data>
+    <data name="CalculateRateButton" xml:space="preserve">
+        <value>Calculate Rates</value>
+    </data>
+    <data name="RequiredFieldMessage" xml:space="preserve">
+        <value>This field is required</value>
+    </data>
 </root>

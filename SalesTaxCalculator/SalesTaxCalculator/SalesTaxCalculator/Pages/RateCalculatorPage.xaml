@@ -9,12 +9,18 @@
                       xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
                       xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
                       Title="{x:Static r:AppResources.RateTabTitle}"
-                      x:Class="SalesTaxCalculator.Pages.RateCalculatorPage">
+                      x:Class="SalesTaxCalculator.Pages.RateCalculatorPage" 
+                      x:DataType="pageModels:RateCalculatorPageModel">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+            <Entry Text="{Binding ZipCode.Value}" 
+                   Placeholder="{x:Static r:AppResources.ZipPlaceholder}"/>
+            <Entry Text="{Binding Country.Value}" 
+                   Placeholder="{x:Static r:AppResources.CountryPlaceholder}"/>
+            <Entry Text="{Binding City.Value}" 
+                   Placeholder="{x:Static r:AppResources.CityPlaceholder}"/>
+            <Button Text="{x:Static r:AppResources.CalculateRateButton}"
+                    Command="{Binding CalculateRatesCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
