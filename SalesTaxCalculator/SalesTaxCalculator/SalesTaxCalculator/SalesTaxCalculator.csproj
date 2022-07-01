@@ -21,11 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models" />
-    <Folder Include="Services" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\SalesTaxCalculator.Common\SalesTaxCalculator.Common.csproj" />
     <ProjectReference Include="..\..\SalesTaxCalculator.Services\SalesTaxCalculator.Services.csproj" />
   </ItemGroup>

@@ -1,47 +1,57 @@
+using System;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
+using SalesTaxCalculator.Common.Interfaces;
+using SalesTaxCalculator.Models;
 using SalesTaxCalculator.Resources;
+using SalesTaxCalculator.Services.ApiClients;
 using SalesTaxCalculator.Validations;
 
 namespace SalesTaxCalculator.PageModels;
 
 public class RateCalculatorPageModel : BasePageModel
 {
-    private ValidatableObject<string> _zipCode;
-    private ValidatableObject<string> _country;
-    private ValidatableObject<string> _city;
+    private readonly IDialogService _dialogService;
+    private readonly IRateService _rateService;
 
-    public RateCalculatorPageModel(IMvxNavigationService navigationService) : base(navigationService)
+    public RateCalculatorPageModel(
+        IDialogService dialogService,
+        IRateService rateService,
+        IConnectivityService connectivityService,
+        IMvxNavigationService navigationService, 
+        ILogger logger) : base(navigationService, logger, connectivityService)
     {
+        _dialogService = dialogService;
+        _rateService = rateService;
         CalculateRatesCommand = new MvxAsyncCommand(ExecuteCalculateRatesCommand);
+        RateModel = new();
         SetValidators();
     }
 
-    public ValidatableObject<string> ZipCode
-    {
-        get => _zipCode;
-        set => SetProperty(ref _zipCode, value);
-    }
+    public RateModel RateModel { get; }
 
-    public ValidatableObject<string> Country
-    {
-        get => _country;
-        set => SetProperty(ref _country, value);
-    }
-
-    public ValidatableObject<string> City
-    {
-        get => _city;
-        set => SetProperty(ref _city, value);
-    }
-    
     public IMvxCommand CalculateRatesCommand { get; }
     
-    private Task ExecuteCalculateRatesCommand()
+    private async Task ExecuteCalculateRatesCommand()
     {
-        
-        return Task.CompletedTask;
+        try
+        {
+            //todo check internet connection here
+            if (RateModel.Validate() is false)
+            {
+                await _dialogService.ShowAlert(AppResources.ValidationFailedMessage, string.Join("; ", RateModel.GetErrors()));
+                return;
+            }
+
+
+            var rates = await _rateService.GetRates(RateModel.ZipCode.Value, RateModel.Country.Value, RateModel.City.Value);
+            //todo display rates
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex);
+        }
     }
 
     private void SetValidators()
@@ -59,9 +69,9 @@ public class RateCalculatorPageModel : BasePageModel
             ValidationMessage = AppResources.RequiredFieldMessage
         };
         
-        ZipCode.Validations.Add(notEmptyValidationRule);
-        ZipCode.Validations.Add(zipCodeValidationRule);
-        Country.Validations.Add(notEmptyValidationRule);
-        Country.Validations.Add(countryCodeValidationRule);
+        RateModel.ZipCode.Validations.Add(notEmptyValidationRule);
+        RateModel.ZipCode.Validations.Add(zipCodeValidationRule);
+        RateModel.Country.Validations.Add(notEmptyValidationRule);
+        RateModel.Country.Validations.Add(countryCodeValidationRule);
     }
 }

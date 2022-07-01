@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using MvvmCross.ViewModels;
 
 namespace SalesTaxCalculator.Validations;
@@ -41,13 +42,13 @@ public class ValidatableObject<T> : MvxNotifyPropertyChanged
         _validations = new List<IValidationRule<T>>();
     }
 
-    public bool Validate()
+    public bool Validate([CallerMemberName] string propertyName = null)
     {
         Errors.Clear();
 
         var errors = _validations
             .Where(v => !v.Check(Value))
-            .Select(v => v.ValidationMessage);
+            .Select(v => $"{propertyName}: {v.ValidationMessage}");
 
         Errors.AddRange(errors.ToList());
         IsValid = !Errors.Any();

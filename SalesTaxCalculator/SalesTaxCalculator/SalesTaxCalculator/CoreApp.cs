@@ -9,6 +9,8 @@ using SalesTaxCalculator.PageModels;
 using SalesTaxCalculator.Services;
 using SalesTaxCalculator.Services.ApiClients;
 using SalesTaxCalculator.Services.Http;
+using SalesTaxCalculator.Services.Services;
+using Xamarin.Forms;
 
 namespace SalesTaxCalculator
 {
@@ -32,8 +34,12 @@ namespace SalesTaxCalculator
 
             var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(jsonSerializer));
             
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ILogger, Logger>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IApiConfigurator, ApiConfigurator>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IConnectivityService, EssentialsConnectivityService>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRateService, RateService>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IHttpClientFactory, HttpClientFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDialogService>(() => new FormsDialogService(Application.Current));
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITaxesApi>(() =>
             {

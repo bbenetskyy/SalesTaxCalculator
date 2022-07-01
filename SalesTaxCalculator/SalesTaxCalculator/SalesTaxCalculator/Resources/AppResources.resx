@@ -39,4 +39,10 @@
     <data name="RequiredFieldMessage" xml:space="preserve">
         <value>This field is required</value>
     </data>
+    <data name="OkButton" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="ValidationFailedMessage" xml:space="preserve">
+        <value>Validation of input parameters failed</value>
+    </data>
 </root>

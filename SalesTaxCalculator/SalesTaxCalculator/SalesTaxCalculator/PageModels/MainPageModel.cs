@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Navigation;
-using SalesTaxCalculator.Common.Models.Requests;
-using SalesTaxCalculator.Services.ApiClients;
+using SalesTaxCalculator.Common.Interfaces;
 using Xamarin.Forms;
 
 namespace SalesTaxCalculator.PageModels;
@@ -12,7 +10,11 @@ public class MainPageModel : BasePageModel
 {
     private bool _initialized;
 
-    public MainPageModel(IMvxNavigationService navigationService) : base(navigationService)
+    public MainPageModel(
+        IConnectivityService connectivityService,
+        IMvxNavigationService navigationService, 
+        ILogger logger) 
+        : base(navigationService, logger, connectivityService)
     {
     }
     

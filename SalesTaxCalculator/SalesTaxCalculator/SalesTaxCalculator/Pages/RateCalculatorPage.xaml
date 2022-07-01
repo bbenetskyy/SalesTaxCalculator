@@ -13,11 +13,11 @@
                       x:DataType="pageModels:RateCalculatorPageModel">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Text="{Binding ZipCode.Value}" 
+            <Entry Text="{Binding  RateModel.ZipCode.Value}" 
                    Placeholder="{x:Static r:AppResources.ZipPlaceholder}"/>
-            <Entry Text="{Binding Country.Value}" 
+            <Entry Text="{Binding RateModel.Country.Value}" 
                    Placeholder="{x:Static r:AppResources.CountryPlaceholder}"/>
-            <Entry Text="{Binding City.Value}" 
+            <Entry Text="{Binding RateModel.City.Value}" 
                    Placeholder="{x:Static r:AppResources.CityPlaceholder}"/>
             <Button Text="{x:Static r:AppResources.CalculateRateButton}"
                     Command="{Binding CalculateRatesCommand}"/>

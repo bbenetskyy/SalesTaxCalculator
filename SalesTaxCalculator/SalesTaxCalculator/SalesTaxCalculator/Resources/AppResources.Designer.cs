@@ -86,5 +86,17 @@ namespace SalesTaxCalculator.Resources {
                 return ResourceManager.GetString("RequiredFieldMessage", resourceCulture);
             }
         }
+        
+        internal static string OkButton {
+            get {
+                return ResourceManager.GetString("OkButton", resourceCulture);
+            }
+        }
+        
+        internal static string ValidationFailedMessage {
+            get {
+                return ResourceManager.GetString("ValidationFailedMessage", resourceCulture);
+            }
+        }
     }
 }
