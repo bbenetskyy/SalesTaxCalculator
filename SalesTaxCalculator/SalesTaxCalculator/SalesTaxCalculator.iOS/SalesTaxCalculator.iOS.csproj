@@ -70,6 +70,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -137,5 +138,8 @@
       <Project>{B89E8CCC-2784-4027-82C7-DFDB701CC083}</Project>
       <Name>SalesTaxCalculator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderer\" />
   </ItemGroup>
 </Project>

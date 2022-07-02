@@ -1,26 +1,195 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
-<views:MvxContentPage x:TypeArguments="pageModels:RateCalculatorPageModel"
-                      xmlns="http://xamarin.com/schemas/2014/forms"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.interest-rate.png}"
-                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
-                      xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
-                      xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
-                      Title="{x:Static r:AppResources.RateTabTitle}"
-                      x:Class="SalesTaxCalculator.Pages.RateCalculatorPage" 
-                      x:DataType="pageModels:RateCalculatorPageModel">
-    <ContentPage.Content>
-        <StackLayout>
-            <Entry Text="{Binding  RateModel.ZipCode.Value}" 
-                   Placeholder="{x:Static r:AppResources.ZipPlaceholder}"/>
-            <Entry Text="{Binding RateModel.Country.Value}" 
-                   Placeholder="{x:Static r:AppResources.CountryPlaceholder}"/>
-            <Entry Text="{Binding RateModel.City.Value}" 
-                   Placeholder="{x:Static r:AppResources.CityPlaceholder}"/>
-            <Button Text="{x:Static r:AppResources.CalculateRateButton}"
-                    Command="{Binding CalculateRatesCommand}"/>
-        </StackLayout>
-    </ContentPage.Content>
+<views:MvxContentPage
+    x:TypeArguments="pageModels:RateCalculatorPageModel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.interest-rate.png}"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
+    xmlns:controls="clr-namespace:SalesTaxCalculator.Controls;assembly=SalesTaxCalculator"
+    xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
+    Title="{x:Static r:AppResources.RateTabTitle}"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="False"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="SalesTaxCalculator.Pages.RateCalculatorPage"
+    x:DataType="pageModels:RateCalculatorPageModel">
+    <ContentView>
+        <Grid
+            RowDefinitions="*,50, *,50, auto">
+            <ContentView
+                Grid.RowSpan="2"
+                Padding="16">
+                <ContentView.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush
+                        EndPoint="0.5,1">
+                        <GradientStop
+                            Color="Orange"
+                            Offset="0.1" />
+                        <GradientStop
+                            Color="#FF8400"
+                            Offset="1" />
+                    </LinearGradientBrush>
+                </ContentView.Background>
+                <StackLayout
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="26"
+                        Text="{Binding RateDetailsModel.County}"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End" />
+                    <Label
+                        Text="{Binding RateDetailsModel.City}"
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        FontAttributes="Bold" />
+                    <StackLayout>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Country rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.CountryRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="County rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.CountyRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="City rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.CityRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Combiden district rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.CombinedDistrictRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Combiden rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.CombinedRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="State rate: " />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.StateRate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        Text=" ("
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        Text="{Binding RateDetailsModel.State}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        Text=")"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <yummy:PancakeView
+                BackgroundColor="White"
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                CornerRadius="40,40,0,0"
+                Margin="30,0"
+                Padding="30">
+                <yummy:PancakeView.Border>
+                    <yummy:Border
+                        Thickness="3"
+                        Color="#FF8400" />
+                </yummy:PancakeView.Border>
+                <StackLayout>
+                    <controls:CustomEntry
+                        Text="{Binding  RateModel.ZipCode.Value}"
+                        Title="{x:Static r:AppResources.ZipPlaceholder}"
+                        MaxLength="9"
+                        BackgroundColor="Black" />
+                    <controls:CustomEntry
+                        Text="{Binding RateModel.Country.Value}"
+                        Title="{x:Static r:AppResources.CountryPlaceholder}"
+                        MaxLength="2"
+                        BackgroundColor="Black" />
+                    <controls:CustomEntry
+                        Text="{Binding RateModel.City.Value}"
+                        Title="{x:Static r:AppResources.CityPlaceholder}"
+                        BackgroundColor="Black" />
+                </StackLayout>
+            </yummy:PancakeView>
+            <ContentView
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                BackgroundColor="#FF8400">
+                <ContentView
+                    Padding="0,20"
+                    BackgroundColor="#FF8400"
+                    effects:TouchEffect.NativeAnimation="True"
+                    effects:TouchEffect.Command="{Binding CalculateRatesCommand}">
+                    <Label
+                        Text="{x:Static r:AppResources.CalculateRateButton}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        FontSize="Large" />
+                </ContentView>
+            </ContentView>
+        </Grid>
+    </ContentView>
 </views:MvxContentPage>

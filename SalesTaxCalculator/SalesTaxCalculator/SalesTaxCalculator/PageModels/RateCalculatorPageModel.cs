@@ -14,12 +14,13 @@ public class RateCalculatorPageModel : BasePageModel
 {
     private readonly IDialogService _dialogService;
     private readonly IRateService _rateService;
+    private RateDetailsModel _rateDetailsModel;
 
     public RateCalculatorPageModel(
         IDialogService dialogService,
         IRateService rateService,
         IConnectivityService connectivityService,
-        IMvxNavigationService navigationService, 
+        IMvxNavigationService navigationService,
         ILogger logger) : base(navigationService, logger, connectivityService)
     {
         _dialogService = dialogService;
@@ -31,8 +32,14 @@ public class RateCalculatorPageModel : BasePageModel
 
     public RateModel RateModel { get; }
 
+    public RateDetailsModel RateDetailsModel
+    {
+        get => _rateDetailsModel;
+        set => SetProperty(ref _rateDetailsModel, value);
+    }
+
     public IMvxCommand CalculateRatesCommand { get; }
-    
+
     private async Task ExecuteCalculateRatesCommand()
     {
         try
@@ -44,9 +51,7 @@ public class RateCalculatorPageModel : BasePageModel
                 return;
             }
 
-
-            var rates = await _rateService.GetRates(RateModel.ZipCode.Value, RateModel.Country.Value, RateModel.City.Value);
-            //todo display rates
+            RateDetailsModel = await _rateService.GetRates(RateModel.ZipCode.Value, RateModel.Country.Value, RateModel.City.Value);
         }
         catch (Exception ex)
         {
@@ -68,7 +73,7 @@ public class RateCalculatorPageModel : BasePageModel
         {
             ValidationMessage = AppResources.RequiredFieldMessage
         };
-        
+
         RateModel.ZipCode.Validations.Add(notEmptyValidationRule);
         RateModel.ZipCode.Validations.Add(zipCodeValidationRule);
         RateModel.Country.Validations.Add(notEmptyValidationRule);
