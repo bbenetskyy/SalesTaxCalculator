@@ -139,7 +139,8 @@
                                 Grid.Row="1"
                                 IsToggled="{Binding TaxDetailsModel.FreightTaxable}"
                                 OnColor="White"
-                                ThumbColor="Black" />
+                                ThumbColor="Black"
+                                HorizontalOptions="Start" />
                             <Label
                                 Grid.Column="1"
                                 Text="Nexus"
@@ -149,7 +150,8 @@
                                 Grid.Column="1"
                                 IsToggled="{Binding TaxDetailsModel.HasNexus}"
                                 OnColor="White"
-                                ThumbColor="Black" />
+                                ThumbColor="Black"
+                                HorizontalOptions="Start" />
                         </Grid>
                     </StackLayout>
                 </StackLayout>
@@ -189,12 +191,14 @@
                             Grid.Column="0"
                             Grid.Row="1"
                             Text="{Binding TaxModel.FromCountry.Value}"
-                            Title="From Country" />
+                            Title="From Country"
+                            MaxLength="2" />
                         <controls:CustomEntry
                             Grid.Column="1"
                             Grid.Row="1"
                             Text="{Binding TaxModel.ToCountry.Value}"
-                            Title="To Country" />
+                            Title="To Country"
+                            MaxLength="2" />
 
                         <controls:CustomEntry
                             Grid.Column="0"

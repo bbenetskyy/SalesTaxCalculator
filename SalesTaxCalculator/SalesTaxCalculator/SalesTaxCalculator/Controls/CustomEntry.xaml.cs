@@ -18,7 +18,7 @@ namespace SalesTaxCalculator.Controls
 
             Separator.SetBinding(BoxView.ColorProperty, new Binding(nameof(BackgroundColor), source: this));
 
-            ErrorLbl.SetBinding(Label.TextProperty, new Binding(nameof(Error), source: this));
+            //ErrorLbl.SetBinding(Label.TextProperty, new Binding(nameof(Error), source: this));
         }
 
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(

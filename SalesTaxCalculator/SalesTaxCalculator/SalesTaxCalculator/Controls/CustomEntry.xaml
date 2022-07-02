@@ -6,7 +6,7 @@
     VerticalOptions="Start">
     <Grid
         RowSpacing="0"
-        RowDefinitions="auto, auto, auto, auto">
+        RowDefinitions="auto, auto, auto">
         <Label
             x:Name="TitleLbl" />
         <Entry
@@ -17,10 +17,10 @@
             x:Name="Separator"
             Grid.Row="2"
             HeightRequest="2" />
-        <Label
+        <!--<Label
             x:Name="ErrorLbl"
             Grid.Row="3"
-            Margin="0,5" />
+            Margin="0,5" />-->
     </Grid>
 </ContentView>
 
