@@ -12,6 +12,6 @@ public class ZipCodeValidationRule<T> : IValidationRule<T>
         }
         var length = value.ToString().Length;
         //right now supported 5-Digit ZIP or ZIP+4 (5+4)
-        return length is 5 or 5 + 4;
+        return length is >= 5 and <= 9;
     }
 }

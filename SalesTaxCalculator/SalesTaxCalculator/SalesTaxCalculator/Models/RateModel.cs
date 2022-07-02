@@ -49,9 +49,9 @@ public class RateModel : MvxNotifyPropertyChanged, IValidableModel
 
     public bool Validate()
     {
-        ZipCode.Validate();
-        Country.Validate();
-        City.Validate();
+        ZipCode.Validate(nameof(ZipCode));
+        Country.Validate(nameof(Country));
+        City.Validate(nameof(City));
 
         return ZipCode.IsValid 
                && Country.IsValid 

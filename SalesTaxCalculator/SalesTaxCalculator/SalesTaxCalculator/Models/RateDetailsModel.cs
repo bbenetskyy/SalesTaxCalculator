@@ -5,10 +5,6 @@ namespace SalesTaxCalculator.Models
 {
     public class RateDetailsModel
     {
-        public RateDetailsModel()
-        {
-        }
-
         public string City { get; set; }
         public string CityRate { get; set; }
         public string CombinedDistrictRate { get; set; }
@@ -22,12 +18,9 @@ namespace SalesTaxCalculator.Models
         public string StateRate { get; set; }
         public string Zip { get; set; }
 
-        public static implicit operator RateDetailsModel(Rate dto)
-        {
-            if (dto == null)
-                return null;
-
-            return new RateDetailsModel()
+        public static implicit operator RateDetailsModel(Rate dto) => dto == null
+            ? null
+            : new RateDetailsModel()
             {
                 City = dto.City,
                 CityRate = dto.CityRate,
@@ -42,7 +35,6 @@ namespace SalesTaxCalculator.Models
                 StateRate = dto.StateRate,
                 Zip = dto.Zip,
             };
-        }
     }
 }
 

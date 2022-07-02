@@ -45,4 +45,13 @@
     <data name="ValidationFailedMessage" xml:space="preserve">
         <value>Validation of input parameters failed</value>
     </data>
+    <data name="ZipCodeInvalidMessage" xml:space="preserve">
+        <value>5-Digit ZIP or ZIP+4</value>
+    </data>
+    <data name="CountryCodeInvalidMessage" xml:space="preserve">
+        <value>Only US or CA is allowed</value>
+    </data>
+    <data name="InternetConnectionRequiredMessage" xml:space="preserve">
+        <value>This application works online only. Please enable internet access and try again</value>
+    </data>
 </root>

@@ -42,13 +42,14 @@ public class ValidatableObject<T> : MvxNotifyPropertyChanged
         _validations = new List<IValidationRule<T>>();
     }
 
-    public bool Validate([CallerMemberName] string propertyName = null)
+    public bool Validate(string propertyName = null)
     {
         Errors.Clear();
+        var separator = string.IsNullOrEmpty(propertyName) ? string.Empty : ": ";
 
         var errors = _validations
             .Where(v => !v.Check(Value))
-            .Select(v => $"{propertyName}: {v.ValidationMessage}");
+            .Select(v => $"{propertyName}{separator}{v.ValidationMessage}");
 
         Errors.AddRange(errors.ToList());
         IsValid = !Errors.Any();

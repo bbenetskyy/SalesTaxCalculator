@@ -44,10 +44,15 @@ public class RateCalculatorPageModel : BasePageModel
     {
         try
         {
-            //todo check internet connection here
+            if (ConnectivityService.HasInternetConnection() is false)
+            {
+                await _dialogService.ShowAlert(AppResources.InternetConnectionRequiredMessage);
+                return;
+            }
+            
             if (RateModel.Validate() is false)
             {
-                await _dialogService.ShowAlert(AppResources.ValidationFailedMessage, string.Join("; ", RateModel.GetErrors()));
+                await _dialogService.ShowAlert(AppResources.ValidationFailedMessage, string.Join("\n", RateModel.GetErrors()));
                 return;
             }
 
@@ -67,11 +72,11 @@ public class RateCalculatorPageModel : BasePageModel
         };
         ZipCodeValidationRule<string> zipCodeValidationRule = new()
         {
-            ValidationMessage = AppResources.RequiredFieldMessage
+            ValidationMessage = AppResources.ZipCodeInvalidMessage
         };
         CountryCodeValidationRule<string> countryCodeValidationRule = new()
         {
-            ValidationMessage = AppResources.RequiredFieldMessage
+            ValidationMessage = AppResources.CountryCodeInvalidMessage
         };
 
         RateModel.ZipCode.Validations.Add(notEmptyValidationRule);
