@@ -3,16 +3,25 @@
 <views:MvxContentPage x:TypeArguments="pageModels:TaxCalculatorPageModel" 
                       xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.tax.png}"
+                      IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.tax.png.Value}"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
                       xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
                       xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
                       Title="{x:Static r:AppResources.TaxTabTitle}"
-                      x:Class="SalesTaxCalculator.Pages.TaxCalculatorPage">
+                      x:Class="SalesTaxCalculator.Pages.TaxCalculatorPage" 
+                      x:DataType="pageModels:TaxCalculatorPageModel">
     <StackLayout>
-        <Label Text="Hello, world tax!"
-               VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand" />
+        <Entry Text="{Binding TaxModel.FromCity.Value}" Placeholder="From City"/>
+        <Entry Text="{Binding TaxModel.FromCountry.Value}" Placeholder="From Country"/>
+        <Entry Text="{Binding TaxModel.FromState.Value}" Placeholder="From State"/>
+        <Entry Text="{Binding TaxModel.FromZip.Value}" Placeholder="From Zip"/>
+        <Entry Text="{Binding TaxModel.ToCity.Value}" Placeholder="To City"/>
+        <Entry Text="{Binding TaxModel.ToCountry.Value}" Placeholder="To Country"/>
+        <Entry Text="{Binding TaxModel.ToState.Value}" Placeholder="To State"/>
+        <Entry Text="{Binding TaxModel.ToZip.Value}" Placeholder="To Zip"/>
+        <Entry Text="{Binding TaxModel.Amount.Value}" Placeholder="Amount"/>
+        <Entry Text="{Binding TaxModel.Shipping.Value}" Placeholder="Shipping"/>
+        <Button Text="Calculate" Command="{Binding CalculateTaxesCommand}"/>
     </StackLayout>
 </views:MvxContentPage>

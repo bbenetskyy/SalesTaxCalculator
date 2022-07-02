@@ -6,7 +6,7 @@ public class CountryCodeValidationRule<T> : IValidationRule<T>
 
     public bool Check(T value)
     {
-        return value?.ToString() switch
+        return value is null || value.ToString() switch
         {
             "US" => true,
             "CA" => true,

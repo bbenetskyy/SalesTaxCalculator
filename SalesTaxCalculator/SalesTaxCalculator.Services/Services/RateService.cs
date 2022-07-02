@@ -1,7 +1,6 @@
 using Refit;
 using SalesTaxCalculator.Common.Interfaces;
 using SalesTaxCalculator.Common.Models;
-using SalesTaxCalculator.Common.Models.Requests;
 using SalesTaxCalculator.Services.ApiClients;
 
 namespace SalesTaxCalculator.Services.Services;

@@ -87,6 +87,12 @@ namespace SalesTaxCalculator.Resources {
             }
         }
         
+        internal static string StateInvalidMessage {
+            get {
+                return ResourceManager.GetString("StateInvalidMessage", resourceCulture);
+            }
+        }
+        
         internal static string OkButton {
             get {
                 return ResourceManager.GetString("OkButton", resourceCulture);
@@ -114,6 +120,18 @@ namespace SalesTaxCalculator.Resources {
         internal static string InternetConnectionRequiredMessage {
             get {
                 return ResourceManager.GetString("InternetConnectionRequiredMessage", resourceCulture);
+            }
+        }
+        
+        internal static string NumberInvalidMessage {
+            get {
+                return ResourceManager.GetString("NumberInvalidMessage", resourceCulture);
+            }
+        }
+        
+        internal static string GeneralErrorMessage {
+            get {
+                return ResourceManager.GetString("GeneralErrorMessage", resourceCulture);
             }
         }
     }

@@ -39,6 +39,9 @@
     <data name="RequiredFieldMessage" xml:space="preserve">
         <value>This field is required</value>
     </data>
+    <data name="StateInvalidMessage" xml:space="preserve">
+        <value>Field should contains only two letters of state code</value>
+    </data>
     <data name="OkButton" xml:space="preserve">
         <value>OK</value>
     </data>
@@ -53,5 +56,11 @@
     </data>
     <data name="InternetConnectionRequiredMessage" xml:space="preserve">
         <value>This application works online only. Please enable internet access and try again</value>
+    </data>
+    <data name="NumberInvalidMessage" xml:space="preserve">
+        <value>Provided string is not a number</value>
+    </data>
+    <data name="GeneralErrorMessage" xml:space="preserve">
+        <value>We so sorry but something bad happens. Please try again...</value>
     </data>
 </root>

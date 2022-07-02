@@ -5,7 +5,6 @@ using MvvmCross.Navigation;
 using SalesTaxCalculator.Common.Interfaces;
 using SalesTaxCalculator.Models;
 using SalesTaxCalculator.Resources;
-using SalesTaxCalculator.Services.ApiClients;
 using SalesTaxCalculator.Validations;
 
 namespace SalesTaxCalculator.PageModels;
@@ -14,6 +13,7 @@ public class RateCalculatorPageModel : BasePageModel
 {
     private readonly IDialogService _dialogService;
     private readonly IRateService _rateService;
+    
     private RateDetailsModel _rateDetailsModel;
 
     public RateCalculatorPageModel(
@@ -61,6 +61,7 @@ public class RateCalculatorPageModel : BasePageModel
         catch (Exception ex)
         {
             Logger.LogError(ex);
+            await _dialogService.ShowAlert(AppResources.GeneralErrorMessage);
         }
     }
 

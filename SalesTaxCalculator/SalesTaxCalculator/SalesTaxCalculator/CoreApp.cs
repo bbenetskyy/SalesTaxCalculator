@@ -38,6 +38,7 @@ namespace SalesTaxCalculator
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IApiConfigurator, ApiConfigurator>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IConnectivityService, EssentialsConnectivityService>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRateService, RateService>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITaxService, TaxService>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IHttpClientFactory, HttpClientFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDialogService>(() => new FormsDialogService(Application.Current));
 
