@@ -8,6 +8,6 @@
                      x:Class="SalesTaxCalculator.Pages.MainPage"
                      NavigationPage.HasNavigationBar="False"
                      iOsSpecific:Page.UseSafeArea="False"
-                     SelectedTabColor="Black">
+                     SelectedTabColor="{StaticResource BlackColor}">
 </views:MvxTabbedPage>
 

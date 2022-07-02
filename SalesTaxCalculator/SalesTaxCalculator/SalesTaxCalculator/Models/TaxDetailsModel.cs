@@ -17,7 +17,7 @@ public class TaxDetailsModel
 
     public static implicit operator TaxDetailsModel(Tax dto) => dto == null
         ? null
-        : new()
+        : new TaxDetailsModel
         {
             AmountToCollect = dto.AmountToCollect,
             Breakdown = dto.Breakdown,

@@ -29,7 +29,7 @@ public class TaxCalculatorPageModel : BasePageModel
 
         CalculateTaxesCommand = new MvxAsyncCommand(ExecuteCalculateTaxesCommand);
         
-        TaxModel = new();
+        TaxModel = new TaxModel();
         SetValidators();
     }
     

@@ -26,116 +26,116 @@
                     <LinearGradientBrush
                         EndPoint="0.5,1">
                         <GradientStop
-                            Color="Orange"
+                            Color="{StaticResource OrangeColor}"
                             Offset="0.1" />
                         <GradientStop
-                            Color="#FF8400"
+                            Color="{StaticResource DarkOrangeColor}"
                             Offset="1" />
                     </LinearGradientBrush>
                 </ContentView.Background>
                 <StackLayout
-                    Margin="{local:SafeareaExtension IncludeTop=True}"
+                    Margin="{local:SafeArea IncludeTop=True}"
                     Spacing="0"
                     VerticalOptions="Start"
-                    IsVisible="{Binding RateDetailsModel, Converter={x:StaticResource IsNotNullOrEmptyConverter}}">
+                    IsVisible="{Binding RateDetailsModel, Converter={StaticResource IsNotNullOrEmptyConverter}}">
                     <Label
                         FontSize="26"
                         Text="{Binding RateDetailsModel.County}"
-                        TextColor="Black"
+                        TextColor="{StaticResource BlackColor}"
                         FontAttributes="Bold"
                         HorizontalOptions="End" />
                     <Label
                         Text="{Binding RateDetailsModel.City}"
-                        TextColor="White"
+                        TextColor="{StaticResource WhiteColor}"
                         HorizontalOptions="End"
                         FontAttributes="Bold" />
                     <StackLayout>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Country rate: " />
+                                        Text="{x:Static r:AppResources.CountryRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.CountryRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="County rate: " />
+                                        Text="{x:Static r:AppResources.CountryRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.CountyRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="City rate: " />
+                                        Text="{x:Static r:AppResources.CityRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.CityRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Combiden district rate: " />
+                                        Text="{x:Static r:AppResources.CombinedDistrictRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.CombinedDistrictRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Combiden rate: " />
+                                        Text="{x:Static r:AppResources.CombinedRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.CombinedRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="State rate: " />
+                                        Text="{x:Static r:AppResources.StateRateLabel}" />
                                     <Span
                                         Text="{Binding RateDetailsModel.StateRate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                     <Span
                                         Text=" ("
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                     <Span
                                         Text="{Binding RateDetailsModel.State}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                     <Span
                                         Text=")"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -145,19 +145,19 @@
                             Spacing="10"
                             InputTransparent="True">
                             <Label
-                                Text="Freight taxable"
-                                TextColor="White"
+                                Text="{x:Static r:AppResources.FreightTaxableLabel}"
+                                TextColor="{StaticResource WhiteColor}"
                                 VerticalTextAlignment="Center" />
                             <Switch
                                 IsToggled="{Binding RateDetailsModel.FreightTaxable}"
-                                OnColor="White"
-                                ThumbColor="Black" />
+                                OnColor="{StaticResource WhiteColor}" 
+                                ThumbColor="{StaticResource BlackColor}" />
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
             <yummy:PancakeView
-                BackgroundColor="White"
+                BackgroundColor="{StaticResource WhiteColor}"
                 Grid.Row="1"
                 Grid.RowSpan="3"
                 CornerRadius="40,40,0,0"
@@ -166,7 +166,7 @@
                 <yummy:PancakeView.Border>
                     <yummy:Border
                         Thickness="3"
-                        Color="#FF8400" />
+                        Color="{StaticResource DarkOrangeColor}" />
                 </yummy:PancakeView.Border>
                 <StackLayout>
                     <controls:CustomEntry
@@ -185,17 +185,17 @@
             <ContentView
                 Grid.Row="3"
                 Grid.RowSpan="2"
-                BackgroundColor="#FF8400">
+                BackgroundColor="{StaticResource DarkOrangeColor}">
                 <ContentView
                     Padding="0,20"
-                    BackgroundColor="#FF8400"
+                    BackgroundColor="{StaticResource DarkOrangeColor}"
                     effects:TouchEffect.NativeAnimation="True"
                     effects:TouchEffect.Command="{Binding CalculateRatesCommand}">
                     <Label
                         Text="{x:Static r:AppResources.CalculateRateButton}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        TextColor="White"
+                        TextColor="{StaticResource WhiteColor}"
                         FontSize="Large" />
                 </ContentView>
             </ContentView>

@@ -26,7 +26,7 @@ public class RateCalculatorPageModel : BasePageModel
         _dialogService = dialogService;
         _rateService = rateService;
         CalculateRatesCommand = new MvxAsyncCommand(ExecuteCalculateRatesCommand);
-        RateModel = new();
+        RateModel = new RateModel();
         SetValidators();
     }
 

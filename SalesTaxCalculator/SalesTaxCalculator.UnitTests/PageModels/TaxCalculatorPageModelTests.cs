@@ -35,9 +35,6 @@ public class TaxCalculatorPageModelTests : IocSetup
         vm.TaxModel.Shipping.Validations.Should().HaveCount(1);
         vm.TaxModel.FromZip.Validations.Should().HaveCount(1);
         vm.TaxModel.Amount.Validations.Should().HaveCount(1);
-        
-        vm.TaxModel.ToCity.Validations.Should().HaveCount(0);
-        vm.TaxModel.FromCity.Validations.Should().HaveCount(0);
     }
     
     [Test]

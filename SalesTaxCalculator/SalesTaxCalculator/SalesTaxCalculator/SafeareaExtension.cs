@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace SalesTaxCalculator
 {
     [ContentProperty(nameof(Margin))]
-    public class SafeareaExtension : IMarkupExtension
+    public class SafeAreaExtension : IMarkupExtension
     {
         #region Fields
         /// <summary>
@@ -20,7 +20,7 @@ namespace SalesTaxCalculator
         /// <summary>
         /// Constructor used to create an instance of this class
         /// </summary>
-        public SafeareaExtension()
+        public SafeAreaExtension()
         {
             if (Mvx.IoCProvider.CanResolve<ISafeAreaInfo>())
             {
@@ -33,7 +33,7 @@ namespace SalesTaxCalculator
         /// <summary>
         /// Gets or sets the margin of control
         /// </summary>
-        public Thickness Margin { get; set; } = new Thickness(0);
+        public Thickness Margin { get; set; } = new(0);
 
         /// <summary>
         /// Gets or sets the value if need to add top margin regarding to safe area value

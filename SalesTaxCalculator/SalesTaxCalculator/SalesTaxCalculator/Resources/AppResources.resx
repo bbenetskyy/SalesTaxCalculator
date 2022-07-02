@@ -63,4 +63,43 @@
     <data name="GeneralErrorMessage" xml:space="preserve">
         <value>We so sorry but something bad happens. Please try again...</value>
     </data>
+    <data name="CountryRateLabel" xml:space="preserve">
+        <value>Country rate: </value>
+    </data>
+    <data name="CityRateLabel" xml:space="preserve">
+        <value>City rate: </value>
+    </data>
+    <data name="CombinedDistrictRateLabel" xml:space="preserve">
+        <value>Combined district rate: </value>
+    </data>
+    <data name="CombinedRateLabel" xml:space="preserve">
+        <value>Combined rate: </value>
+    </data>
+    <data name="StateRateLabel" xml:space="preserve">
+        <value>State rate: </value>
+    </data>
+    <data name="FreightTaxableLabel" xml:space="preserve">
+        <value>Freight taxable</value>
+    </data>
+    <data name="TaxSourceLabel" xml:space="preserve">
+        <value>Tax Source: </value>
+    </data>
+    <data name="AmountToCollectLabel" xml:space="preserve">
+        <value>Amount to collect: </value>
+    </data>
+    <data name="OrderTotalAmountLabel" xml:space="preserve">
+        <value>Order total amount: </value>
+    </data>
+    <data name="RateLabel" xml:space="preserve">
+        <value>Rate: </value>
+    </data>
+    <data name="TaxableAmountLabel" xml:space="preserve">
+        <value>Taxable amount: </value>
+    </data>
+    <data name="NexusLabel" xml:space="preserve">
+        <value>Nexus</value>
+    </data>
+    <data name="CalculateTaxesLabel" xml:space="preserve">
+        <value>Calculate Taxes</value>
+    </data>
 </root>

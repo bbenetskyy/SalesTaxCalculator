@@ -116,7 +116,7 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
 
     public static implicit operator TaxesRequest(TaxModel model) => model == null
         ? null
-        : new()
+        : new TaxesRequest
         {
             FromCountry = model.FromCountry.Value,
             FromZip = model.FromZip.Value,

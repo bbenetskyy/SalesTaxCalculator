@@ -26,21 +26,21 @@
                     <LinearGradientBrush
                         EndPoint="0.5,1">
                         <GradientStop
-                            Color="Orange"
+                            Color="{StaticResource OrangeColor}"
                             Offset="0.1" />
                         <GradientStop
-                            Color="#FF8400"
+                            Color="{StaticResource DarkOrangeColor}"
                             Offset="1" />
                     </LinearGradientBrush>
                 </ContentView.Background>
                 <StackLayout
-                    Margin="{local:SafeareaExtension IncludeTop=True}"
+                    Margin="{local:SafeArea IncludeTop=True}"
                     Spacing="0"
                     VerticalOptions="Start"
-                    IsVisible="{Binding TaxDetailsModel, Converter={x:StaticResource IsNotNullOrEmptyConverter}}">
+                    IsVisible="{Binding TaxDetailsModel, Converter={StaticResource IsNotNullOrEmptyConverter}}">
                     <Label
                         FontSize="26"
-                        TextColor="White"
+                        TextColor="{StaticResource WhiteColor}"
                         FontAttributes="Bold"
                         HorizontalOptions="End">
                         <Label.FormattedText>
@@ -49,81 +49,81 @@
                                     Text="{Binding TaxDetailsModel.Jurisdictions.Country}" />
                                 <Span
                                     Text=" ("
-                                    TextColor="Black" />
+                                    TextColor="{StaticResource BlackColor}" />
                                 <Span
                                     Text="{Binding TaxDetailsModel.Jurisdictions.State}"
-                                    TextColor="Black" />
+                                    TextColor="{StaticResource BlackColor}" />
                                 <Span
                                     Text=")"
-                                    TextColor="Black" />
+                                    TextColor="{StaticResource BlackColor}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <Label
-                        TextColor="White"
+                        TextColor="{StaticResource WhiteColor}"
                         HorizontalOptions="End"
                         FontAttributes="Bold">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    Text="Tax Source: " />
+                                    Text="{x:Static r:AppResources.TaxSourceLabel}" />
                                 <Span
                                     Text="{Binding TaxDetailsModel.TaxSource}"
                                     TextTransform="Uppercase"
-                                    TextColor="Black" />
+                                    TextColor="{StaticResource BlackColor}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <StackLayout
                         Margin="0,20,0,0">
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Amount to collect: " />
+                                        Text="{x:Static r:AppResources.AmountToCollectLabel}" />
                                     <Span
                                         Text="{Binding TaxDetailsModel.AmountToCollect}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Order total amount: " />
+                                        Text="{x:Static r:AppResources.OrderTotalAmountLabel}" />
                                     <Span
                                         Text="{Binding TaxDetailsModel.OrderTotalAmount}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Rate: " />
+                                        Text="{x:Static r:AppResources.RateLabel}" />
                                     <Span
                                         Text="{Binding TaxDetailsModel.Rate}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                         <Label
-                            TextColor="White">
+                            TextColor="{StaticResource WhiteColor}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        Text="Taxable amount: " />
+                                        Text="{x:Static r:AppResources.TaxableAmountLabel}" />
                                     <Span
                                         Text="{Binding TaxDetailsModel.TaxableAmount}"
-                                        TextColor="Black"
+                                        TextColor="{StaticResource BlackColor}"
                                         FontAttributes="Bold" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -133,24 +133,24 @@
                             ColumnDefinitions="*,*"
                             InputTransparent="True">
                             <Label
-                                Text="Freight taxable"
-                                TextColor="White" />
+                                Text="{x:Static r:AppResources.FreightTaxableLabel}"
+                                TextColor="{StaticResource WhiteColor}" />
                             <Switch
                                 Grid.Row="1"
                                 IsToggled="{Binding TaxDetailsModel.FreightTaxable}"
-                                OnColor="White"
-                                ThumbColor="Black"
+                                OnColor="{StaticResource WhiteColor}" 
+                                ThumbColor="{StaticResource BlackColor}" 
                                 HorizontalOptions="Start" />
                             <Label
                                 Grid.Column="1"
-                                Text="Nexus"
-                                TextColor="White" />
+                                Text="{x:Static r:AppResources.NexusLabel}"
+                                TextColor="{StaticResource WhiteColor}" />
                             <Switch
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 IsToggled="{Binding TaxDetailsModel.HasNexus}"
-                                OnColor="White"
-                                ThumbColor="Black"
+                                OnColor="{StaticResource WhiteColor}" 
+                                ThumbColor="{StaticResource BlackColor}" 
                                 HorizontalOptions="Start" />
                         </Grid>
                     </StackLayout>
@@ -162,16 +162,14 @@
                 Grid.RowSpan="3"
                 VerticalScrollBarVisibility="Never">
                 <yummy:PancakeView
-                    Grid.Row="1"
-                    Grid.RowSpan="3"
-                    BackgroundColor="White"
+                    BackgroundColor="{StaticResource WhiteColor}"
                     CornerRadius="40,40,0,0"
                     Margin="30,0"
                     Padding="30">
                     <yummy:PancakeView.Border>
                         <yummy:Border
                             Thickness="3"
-                            Color="#FF8400" />
+                            Color="{StaticResource DarkOrangeColor}" />
                     </yummy:PancakeView.Border>
                     <Grid
                         ColumnDefinitions="*,*"
@@ -227,17 +225,17 @@
             <ContentView
                 Grid.Row="3"
                 Grid.RowSpan="2"
-                BackgroundColor="#FF8400">
+                BackgroundColor="{StaticResource DarkOrangeColor}">
                 <ContentView
                     Padding="0,20"
-                    BackgroundColor="#FF8400"
+                    BackgroundColor="{StaticResource DarkOrangeColor}"
                     effects:TouchEffect.NativeAnimation="True"
                     effects:TouchEffect.Command="{Binding CalculateTaxesCommand}">
                     <Label
-                        Text="Calculate Taxes"
+                        Text="{x:Static r:AppResources.CalculateTaxesLabel}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        TextColor="White"
+                        TextColor="{StaticResource WhiteColor}"
                         FontSize="Large" />
                 </ContentView>
             </ContentView>

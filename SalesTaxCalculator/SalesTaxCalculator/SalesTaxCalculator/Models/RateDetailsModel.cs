@@ -20,7 +20,7 @@ namespace SalesTaxCalculator.Models
 
         public static implicit operator RateDetailsModel(Rate dto) => dto == null
             ? null
-            : new()
+            : new RateDetailsModel
             {
                 City = dto.City,
                 CityRate = dto.CityRate,
