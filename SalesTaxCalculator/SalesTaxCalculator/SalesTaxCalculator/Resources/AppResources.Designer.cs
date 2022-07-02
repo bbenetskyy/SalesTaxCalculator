@@ -14,7 +14,7 @@ namespace SalesTaxCalculator.Resources {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.1.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    public class AppResources {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -25,7 +25,7 @@ namespace SalesTaxCalculator.Resources {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        public static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SalesTaxCalculator.Resources.AppResources", typeof(AppResources).Assembly);
@@ -36,7 +36,7 @@ namespace SalesTaxCalculator.Resources {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Globalization.CultureInfo Culture {
+        public static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -45,91 +45,91 @@ namespace SalesTaxCalculator.Resources {
             }
         }
         
-        internal static string TaxTabTitle {
+        public static string TaxTabTitle {
             get {
                 return ResourceManager.GetString("TaxTabTitle", resourceCulture);
             }
         }
         
-        internal static string RateTabTitle {
+        public static string RateTabTitle {
             get {
                 return ResourceManager.GetString("RateTabTitle", resourceCulture);
             }
         }
         
-        internal static string ZipPlaceholder {
+        public static string ZipPlaceholder {
             get {
                 return ResourceManager.GetString("ZipPlaceholder", resourceCulture);
             }
         }
         
-        internal static string CountryPlaceholder {
+        public static string CountryPlaceholder {
             get {
                 return ResourceManager.GetString("CountryPlaceholder", resourceCulture);
             }
         }
         
-        internal static string CityPlaceholder {
+        public static string CityPlaceholder {
             get {
                 return ResourceManager.GetString("CityPlaceholder", resourceCulture);
             }
         }
         
-        internal static string CalculateRateButton {
+        public static string CalculateRateButton {
             get {
                 return ResourceManager.GetString("CalculateRateButton", resourceCulture);
             }
         }
         
-        internal static string RequiredFieldMessage {
+        public static string RequiredFieldMessage {
             get {
                 return ResourceManager.GetString("RequiredFieldMessage", resourceCulture);
             }
         }
         
-        internal static string StateInvalidMessage {
+        public static string StateInvalidMessage {
             get {
                 return ResourceManager.GetString("StateInvalidMessage", resourceCulture);
             }
         }
         
-        internal static string OkButton {
+        public static string OkButton {
             get {
                 return ResourceManager.GetString("OkButton", resourceCulture);
             }
         }
         
-        internal static string ValidationFailedMessage {
+        public static string ValidationFailedMessage {
             get {
                 return ResourceManager.GetString("ValidationFailedMessage", resourceCulture);
             }
         }
         
-        internal static string ZipCodeInvalidMessage {
+        public static string ZipCodeInvalidMessage {
             get {
                 return ResourceManager.GetString("ZipCodeInvalidMessage", resourceCulture);
             }
         }
         
-        internal static string CountryCodeInvalidMessage {
+        public static string CountryCodeInvalidMessage {
             get {
                 return ResourceManager.GetString("CountryCodeInvalidMessage", resourceCulture);
             }
         }
         
-        internal static string InternetConnectionRequiredMessage {
+        public static string InternetConnectionRequiredMessage {
             get {
                 return ResourceManager.GetString("InternetConnectionRequiredMessage", resourceCulture);
             }
         }
         
-        internal static string NumberInvalidMessage {
+        public static string NumberInvalidMessage {
             get {
                 return ResourceManager.GetString("NumberInvalidMessage", resourceCulture);
             }
         }
         
-        internal static string GeneralErrorMessage {
+        public static string GeneralErrorMessage {
             get {
                 return ResourceManager.GetString("GeneralErrorMessage", resourceCulture);
             }

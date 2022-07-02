@@ -94,8 +94,6 @@ public class TaxCalculatorPageModel : BasePageModel
         TaxModel.ToCountry.Validations.Add(notEmptyValidationRule);
         TaxModel.ToZip.Validations.Add(notEmptyValidationRule);
         TaxModel.ToState.Validations.Add(notEmptyValidationRule);
-        TaxModel.Amount.Validations.Add(notEmptyValidationRule);
-        TaxModel.Shipping.Validations.Add(notEmptyValidationRule);
         
         TaxModel.Amount.Validations.Add(doubleValidationRule);
         TaxModel.Shipping.Validations.Add(doubleValidationRule);
