@@ -19,8 +19,5 @@ public partial class RateCalculatorPage : MvxContentPage<RateCalculatorPageModel
     public RateCalculatorPage()
     {
         InitializeComponent();
-
-        Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-        On<iOS>().SetUseSafeArea(false);
     }
 }
