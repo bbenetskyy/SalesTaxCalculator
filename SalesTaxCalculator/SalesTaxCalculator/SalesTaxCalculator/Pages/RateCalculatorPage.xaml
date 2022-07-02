@@ -140,6 +140,19 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            InputTransparent="True">
+                            <Label
+                                Text="Freight taxable"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Switch
+                                IsToggled="{Binding RateDetailsModel.FreightTaxable}"
+                                OnColor="White"
+                                ThumbColor="Black" />
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
