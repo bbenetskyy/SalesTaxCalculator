@@ -49,8 +49,10 @@
     </EmbeddedResource>
     <None Remove="Controls\" />
     <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="Services\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 </Project>

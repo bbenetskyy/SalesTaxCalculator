@@ -1,27 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
-<views:MvxContentPage x:TypeArguments="pageModels:TaxCalculatorPageModel" 
-                      xmlns="http://xamarin.com/schemas/2014/forms"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.tax.png}"
-                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
-                      xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
-                      xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
-                      Title="{x:Static r:AppResources.TaxTabTitle}"
-                      x:Class="SalesTaxCalculator.Pages.TaxCalculatorPage" 
-                      x:DataType="pageModels:TaxCalculatorPageModel">
-    <StackLayout>
-        <Entry Text="{Binding TaxModel.FromCity.Value}" Placeholder="From City"/>
-        <Entry Text="{Binding TaxModel.FromCountry.Value}" Placeholder="From Country"/>
-        <Entry Text="{Binding TaxModel.FromState.Value}" Placeholder="From State"/>
-        <Entry Text="{Binding TaxModel.FromZip.Value}" Placeholder="From Zip"/>
-        <Entry Text="{Binding TaxModel.ToCity.Value}" Placeholder="To City"/>
-        <Entry Text="{Binding TaxModel.ToCountry.Value}" Placeholder="To Country"/>
-        <Entry Text="{Binding TaxModel.ToState.Value}" Placeholder="To State"/>
-        <Entry Text="{Binding TaxModel.ToZip.Value}" Placeholder="To Zip"/>
-        <Entry Text="{Binding TaxModel.Amount.Value}" Placeholder="Amount"/>
-        <Entry Text="{Binding TaxModel.Shipping.Value}" Placeholder="Shipping"/>
-        <Button Text="Calculate" Command="{Binding CalculateTaxesCommand}"/>
-    </StackLayout>
+<views:MvxContentPage
+    x:TypeArguments="pageModels:TaxCalculatorPageModel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    IconImageSource="{extensions:ImageResource SalesTaxCalculator.Icons.tax.png}"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:pageModels="clr-namespace:SalesTaxCalculator.PageModels;assembly=SalesTaxCalculator"
+    xmlns:controls="clr-namespace:SalesTaxCalculator.Controls;assembly=SalesTaxCalculator"
+    xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:SalesTaxCalculator;assembly=SalesTaxCalculator"
+    xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
+    Title="{x:Static r:AppResources.TaxTabTitle}"
+    x:Class="SalesTaxCalculator.Pages.TaxCalculatorPage"
+    x:DataType="pageModels:TaxCalculatorPageModel">
+    <ContentView>
+        <Grid
+            RowDefinitions="*,50, *,50, auto">
+            <ContentView
+                Grid.RowSpan="2"
+                Padding="16">
+                <ContentView.Background>
+                    <LinearGradientBrush
+                        EndPoint="0.5,1">
+                        <GradientStop
+                            Color="Orange"
+                            Offset="0.1" />
+                        <GradientStop
+                            Color="#FF8400"
+                            Offset="1" />
+                    </LinearGradientBrush>
+                </ContentView.Background>
+                <StackLayout
+                    Margin="{local:SafeareaExtension IncludeTop=True}"
+                    Spacing="0"
+                    VerticalOptions="Start"
+                    IsVisible="{Binding TaxDetailsModel, Converter={x:StaticResource IsNotNullOrEmptyConverter}}">
+                    <Label
+                        FontSize="26"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding TaxDetailsModel.Jurisdictions.Country}" />
+                                <Span
+                                    Text=" ("
+                                    TextColor="Black" />
+                                <Span
+                                    Text="{Binding TaxDetailsModel.Jurisdictions.State}"
+                                    TextColor="Black" />
+                                <Span
+                                    Text=")"
+                                    TextColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        TextColor="White"
+                        HorizontalOptions="End"
+                        FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Tax Source: " />
+                                <Span
+                                    Text="{Binding TaxDetailsModel.TaxSource}"
+                                    TextTransform="Uppercase"
+                                    TextColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout
+                        Margin="0,20,0,0">
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Amount to collect: " />
+                                    <Span
+                                        Text="{Binding TaxDetailsModel.AmountToCollect}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Order total amount: " />
+                                    <Span
+                                        Text="{Binding TaxDetailsModel.OrderTotalAmount}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Rate: " />
+                                    <Span
+                                        Text="{Binding TaxDetailsModel.Rate}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Taxable amount: " />
+                                    <Span
+                                        Text="{Binding TaxDetailsModel.TaxableAmount}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Grid
+                            RowDefinitions="auto, auto"
+                            ColumnDefinitions="*,*"
+                            InputTransparent="True">
+                            <Label
+                                Text="Freight taxable"
+                                TextColor="White" />
+                            <Switch
+                                Grid.Row="1"
+                                IsToggled="{Binding TaxDetailsModel.FreightTaxable}"
+                                OnColor="White"
+                                ThumbColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Text="Nexus"
+                                TextColor="White" />
+                            <Switch
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                IsToggled="{Binding TaxDetailsModel.HasNexus}"
+                                OnColor="White"
+                                ThumbColor="Black" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+
+            <ScrollView
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                VerticalScrollBarVisibility="Never">
+                <yummy:PancakeView
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    BackgroundColor="White"
+                    CornerRadius="40,40,0,0"
+                    Margin="30,0"
+                    Padding="30">
+                    <yummy:PancakeView.Border>
+                        <yummy:Border
+                            Thickness="3"
+                            Color="#FF8400" />
+                    </yummy:PancakeView.Border>
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="auto,auto,auto,auto">
+                        <controls:CustomEntry
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Text="{Binding TaxModel.Amount.Value}"
+                            Title="Amount" />
+                        <controls:CustomEntry
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{Binding TaxModel.Shipping.Value}"
+                            Title="Shipping" />
+
+                        <controls:CustomEntry
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="{Binding TaxModel.FromCountry.Value}"
+                            Title="From Country" />
+                        <controls:CustomEntry
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{Binding TaxModel.ToCountry.Value}"
+                            Title="To Country" />
+
+                        <controls:CustomEntry
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Text="{Binding TaxModel.FromState.Value}"
+                            Title="From State" />
+                        <controls:CustomEntry
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Text="{Binding TaxModel.ToState.Value}"
+                            Title="To State" />
+
+                        <controls:CustomEntry
+                            Grid.Column="0"
+                            Grid.Row="3"
+                            Text="{Binding TaxModel.FromZip.Value}"
+                            Title="From Zip" />
+                        <controls:CustomEntry
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            Text="{Binding TaxModel.ToZip.Value}"
+                            Title="To Zip" />
+                    </Grid>
+                </yummy:PancakeView>
+            </ScrollView>
+            <ContentView
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                BackgroundColor="#FF8400">
+                <ContentView
+                    Padding="0,20"
+                    BackgroundColor="#FF8400"
+                    effects:TouchEffect.NativeAnimation="True"
+                    effects:TouchEffect.Command="{Binding CalculateTaxesCommand}">
+                    <Label
+                        Text="Calculate Taxes"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        FontSize="Large" />
+                </ContentView>
+            </ContentView>
+        </Grid>
+    </ContentView>
 </views:MvxContentPage>

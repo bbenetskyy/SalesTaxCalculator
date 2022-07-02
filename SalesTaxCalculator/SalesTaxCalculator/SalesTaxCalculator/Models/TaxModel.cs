@@ -8,8 +8,6 @@ namespace SalesTaxCalculator.Models;
 
 public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
 {
-    private ValidatableObject<string> _toCity;
-    private ValidatableObject<string> _fromCity;
     private ValidatableObject<string> _fromCountry;
     private ValidatableObject<string> _fromZip;
     private ValidatableObject<string> _fromState;
@@ -21,8 +19,6 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
 
     public TaxModel()
     {
-        _toCity = new ValidatableObject<string>();
-        _fromCity = new ValidatableObject<string>();
         _fromCountry = new ValidatableObject<string>();
         _fromZip = new ValidatableObject<string>();
         _fromState = new ValidatableObject<string>();
@@ -31,18 +27,6 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
         _toState = new ValidatableObject<string>();
         _amount = new ValidatableObject<string>();
         _shipping = new ValidatableObject<string>();
-    }
-
-    public ValidatableObject<string> ToCity
-    {
-        get => _toCity;
-        set => SetProperty(ref _toCity, value);
-    }
-
-    public ValidatableObject<string> FromCity
-    {
-        get => _fromCity;
-        set => SetProperty(ref _fromCity, value);
     }
 
     public ValidatableObject<string> FromCountry
@@ -97,8 +81,6 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
     {
         var result = new List<string>();
 
-        result.AddRange(ToCity.Errors);
-        result.AddRange(FromCity.Errors);
         result.AddRange(FromCountry.Errors);
         result.AddRange(FromZip.Errors);
         result.AddRange(FromState.Errors);
@@ -113,8 +95,6 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
 
     public bool Validate()
     {
-        ToCity.Validate(nameof(ToCity));
-        FromCity.Validate(nameof(FromCity));
         FromCountry.Validate(nameof(FromCountry));
         FromZip.Validate(nameof(FromZip));
         FromState.Validate(nameof(FromState));
@@ -124,9 +104,7 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
         Amount.Validate(nameof(Amount));
         Shipping.Validate(nameof(Shipping));
 
-        return ToCity.IsValid
-               && FromCity.IsValid
-               && FromCountry.IsValid
+        return FromCountry.IsValid
                && FromZip.IsValid
                && FromState.IsValid
                && ToCountry.IsValid
@@ -140,8 +118,6 @@ public class TaxModel : MvxNotifyPropertyChanged, IValidableModel
         ? null
         : new()
         {
-            ToCity = model.ToCity.Value,
-            FromCity = model.FromCity.Value,
             FromCountry = model.FromCountry.Value,
             FromZip = model.FromZip.Value,
             FromState = model.FromState.Value,

@@ -62,7 +62,7 @@ namespace SalesTaxCalculator.Controls
           propertyName: nameof(BackgroundColor),
           returnType: typeof(Color),
           declaringType: typeof(CustomEntry),
-          defaultValue: default);
+          defaultValue: Color.Black);
         public new Color BackgroundColor
         {
             get => (Color)GetValue(BackgroundColorProperty);
@@ -73,7 +73,7 @@ namespace SalesTaxCalculator.Controls
            propertyName: nameof(TextColor),
            returnType: typeof(Color),
            declaringType: typeof(CustomEntry),
-           defaultValue: default);
+           defaultValue: Color.Black);
 
         public Color TextColor
         {

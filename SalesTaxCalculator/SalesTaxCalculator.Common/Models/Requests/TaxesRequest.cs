@@ -2,8 +2,6 @@ namespace SalesTaxCalculator.Common.Models.Requests;
 
 public class TaxesRequest
 {
-    public string ToCity { get; set; }
-    public string FromCity { get; set; }
     public string FromCountry { get; set; }
     public string FromZip { get; set; }
     public string FromState { get; set; }

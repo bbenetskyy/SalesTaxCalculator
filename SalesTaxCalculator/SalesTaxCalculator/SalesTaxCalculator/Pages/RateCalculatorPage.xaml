@@ -10,12 +10,10 @@
     xmlns:controls="clr-namespace:SalesTaxCalculator.Controls;assembly=SalesTaxCalculator"
     xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
     xmlns:r="clr-namespace:SalesTaxCalculator.Resources;assembly=SalesTaxCalculator"
-    Title="{x:Static r:AppResources.RateTabTitle}"
-    NavigationPage.HasNavigationBar="False"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="False"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:SalesTaxCalculator;assembly=SalesTaxCalculator"
     xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
+    Title="{x:Static r:AppResources.RateTabTitle}"
     x:Class="SalesTaxCalculator.Pages.RateCalculatorPage"
     x:DataType="pageModels:RateCalculatorPageModel">
     <ContentView>
@@ -25,7 +23,6 @@
                 Grid.RowSpan="2"
                 Padding="16">
                 <ContentView.Background>
-                    <!-- StartPoint defaults to (0,0) -->
                     <LinearGradientBrush
                         EndPoint="0.5,1">
                         <GradientStop
@@ -37,8 +34,10 @@
                     </LinearGradientBrush>
                 </ContentView.Background>
                 <StackLayout
+                    Margin="{local:SafeareaExtension IncludeTop=True}"
                     Spacing="0"
-                    VerticalOptions="Start">
+                    VerticalOptions="Start"
+                    IsVisible="{Binding RateDetailsModel, Converter={x:StaticResource IsNotNullOrEmptyConverter}}">
                     <Label
                         FontSize="26"
                         Text="{Binding RateDetailsModel.County}"
@@ -160,17 +159,14 @@
                     <controls:CustomEntry
                         Text="{Binding  RateModel.ZipCode.Value}"
                         Title="{x:Static r:AppResources.ZipPlaceholder}"
-                        MaxLength="9"
-                        BackgroundColor="Black" />
+                        MaxLength="9" />
                     <controls:CustomEntry
                         Text="{Binding RateModel.Country.Value}"
                         Title="{x:Static r:AppResources.CountryPlaceholder}"
-                        MaxLength="2"
-                        BackgroundColor="Black" />
+                        MaxLength="2" />
                     <controls:CustomEntry
                         Text="{Binding RateModel.City.Value}"
-                        Title="{x:Static r:AppResources.CityPlaceholder}"
-                        BackgroundColor="Black" />
+                        Title="{x:Static r:AppResources.CityPlaceholder}" />
                 </StackLayout>
             </yummy:PancakeView>
             <ContentView
